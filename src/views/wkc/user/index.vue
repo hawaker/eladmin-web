@@ -60,6 +60,7 @@
             >
               <el-table-column type="selection" width="55" />
               <el-table-column prop="phone" label="手机号" />
+              <el-table-column prop="token" label="token" />
               <el-table-column prop="defaultDeviceId" label="默认设备" />
               <el-table-column prop="defaultUsbUuid" label="USB ID" />
               <el-table-column prop="defaultUsbPath" label="USB路径" />
@@ -314,7 +315,9 @@ export default {
     // 执行
     login(id) {
       console.log(id)
+
       crudWkcUser.login(id).then(res => {
+        console.info(res)
         this.crud.notify('执行成功', CRUD.NOTIFICATION_TYPE.SUCCESS)
       }).catch(err => {
         console.log(err.response.data.message)

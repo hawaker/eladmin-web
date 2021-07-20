@@ -16,6 +16,8 @@ const api = {
     qiNiuUploadApi: baseUrl + '/api/qiNiuContent',
     // Sql 监控
     sqlApi: baseUrl + '/druid/index.html',
+    // activiti
+    modelerApi: baseUrl + '/modeler.html?modelId=',
     // swagger
     swaggerApi: baseUrl + '/swagger-ui.html',
     // 文件上传
