@@ -100,7 +100,7 @@ const defaultForm = {
   version: null
 }
 export default {
-  name: 'Model',
+  name: 'ActivitiModel',
   components: { pagination, crudOperation, rrOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
 

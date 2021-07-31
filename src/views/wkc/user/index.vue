@@ -465,10 +465,15 @@ export default {
       })
     },
     setDefaultUsb(row) {
-      crudWkcUser.setDefaultUsbDevice(this.currentId, this.currentDeviceId, row.uuid, row.path).catch(err => {
-        console.log(err.response.data.message)
-        this.usbLoading = false
-      })
+      this.usbLoading = true
+      crudWkcUser.setDefaultUsbDevice(this.currentId, this.currentDeviceId, this.currentPeerId, row.uuid, row.path)
+        .then(res => {
+          this.usbLoading = false
+        })
+        .catch(err => {
+          console.log(err.response.data.message)
+          this.usbLoading = false
+        })
     },
     // 是否可以选中
     checkboxT(row) {

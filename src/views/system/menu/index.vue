@@ -115,6 +115,8 @@
       </el-table-column>
       <el-table-column :show-overflow-tooltip="true" prop="permission" label="权限标识" />
       <el-table-column :show-overflow-tooltip="true" prop="component" label="组件路径" />
+      <el-table-column :show-overflow-tooltip="true" prop="componentName" label="组件名称" />
+      <el-table-column :show-overflow-tooltip="true" prop="path" label="组件路由" />
       <el-table-column prop="iframe" label="外链" width="75px">
         <template slot-scope="scope">
           <span v-if="scope.row.iframe">是</span>

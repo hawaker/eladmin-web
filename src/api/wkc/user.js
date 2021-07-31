@@ -45,9 +45,9 @@ export function queryUsb(id, peerId) {
   })
 }
 
-export function setDefaultUsbDevice(id, deviceId, uuid, path) {
+export function setDefaultUsbDevice(id, deviceId, peerId, uuid, path) {
   return request({
-    url: 'api/wkcUser/defaultDevice?id=' + id + '&deviceId=' + deviceId + '&uuid=' + uuid + '&path=' + path,
+    url: 'api/wkcUser/defaultDevice?id=' + id + '&deviceId=' + deviceId + '&peerId=' + peerId + '&uuid=' + uuid + '&path=' + path,
     method: 'get'
   })
 }
