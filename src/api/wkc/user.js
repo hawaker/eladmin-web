@@ -87,4 +87,11 @@ export function createTask(id, peerId, path, name, url) {
   })
 }
 
-export default { add, edit, del, login, queryPeer, queryUsb, setDefaultUsbDevice, queryTask, pauseTask, startTask, delTask, createTask }
+export function refreshUuid(id) {
+  return request({
+    url: 'api/wkcUser/refreshUuid?id=' + id,
+    method: 'get'
+  })
+}
+
+export default { add, edit, del, login, queryPeer, queryUsb, setDefaultUsbDevice, queryTask, pauseTask, startTask, delTask, createTask, refreshUuid }

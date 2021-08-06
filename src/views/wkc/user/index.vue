@@ -64,6 +64,7 @@
               <el-table-column prop="defaultDeviceId" label="默认设备" />
               <el-table-column prop="defaultUsbUuid" label="USB ID" />
               <el-table-column prop="defaultUsbPath" label="USB路径" />
+              <el-table-column prop="uuid" label="UUID" />
               <el-table-column
                 v-if="checkPer(['admin','wkcUser:edit','wkcUser:del'])"
                 label="操作"
@@ -79,6 +80,15 @@
                     @click="login(scope.row.id)"
                   >
                     刷新token
+                  </el-button>
+                  <el-button
+                    v-permission="['admin','wkcUser:login']"
+                    size="mini"
+                    style="margin-right: 3px;"
+                    type="text"
+                    @click="refreshUuid(scope.row.id)"
+                  >
+                    刷新UUID
                   </el-button>
                   <udOperation
                     :data="scope.row"
@@ -315,8 +325,16 @@ export default {
     // 执行
     login(id) {
       console.log(id)
-
       crudWkcUser.login(id).then(res => {
+        console.info(res)
+        this.crud.notify('执行成功', CRUD.NOTIFICATION_TYPE.SUCCESS)
+      }).catch(err => {
+        console.log(err.response.data.message)
+      })
+    },
+    refreshUuid(id) {
+      console.log(id)
+      crudWkcUser.refreshUuid(id).then(res => {
         console.info(res)
         this.crud.notify('执行成功', CRUD.NOTIFICATION_TYPE.SUCCESS)
       }).catch(err => {
