@@ -449,7 +449,7 @@ export default {
         return
       }
       this.taskLoading = true
-      crudWkcUser.pauseTask(this.currentId, this.currentPeerId, row.id).then(res => {
+      crudWkcUser.delTask(this.currentId, this.currentPeerId, row.id).then(res => {
         console.info(res)
         this.queryTask()
       }).catch(err => {
