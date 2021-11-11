@@ -231,9 +231,18 @@
                     size="mini"
                     style="margin-right: 3px;"
                     type="text"
-                    @click="deleteTask(scope.row)"
+                    @click="deleteTask(scope.row,false)"
                   >
                     删除
+                  </el-button>
+                  <el-button
+                    v-if="scope.row.state==stateRef.pending||scope.row.state==stateRef.pause||scope.row.state==stateRef.done||scope.row.state==stateRef.waiting||scope.row.state==stateRef.error"
+                    size="mini"
+                    style="margin-right: 3px;"
+                    type="text"
+                    @click="deleteTask(scope.row,true)"
+                  >
+                    删除任务和文件
                   </el-button>
                 </template>
               </el-table-column>
@@ -442,14 +451,14 @@ export default {
         this.taskLoading = false
       })
     },
-    // 暂停任务
-    deleteTask(row) {
+    // 删除任务
+    deleteTask(row, deleteFile) {
       console.info(row)
       if (!row) {
         return
       }
       this.taskLoading = true
-      crudWkcUser.delTask(this.currentId, this.currentPeerId, row.id, true, false).then(res => {
+      crudWkcUser.delTask(this.currentId, this.currentPeerId, row.id, deleteFile, false).then(res => {
         console.info(res)
         this.queryTask()
       }).catch(err => {
